@@ -1,13 +1,22 @@
 const express = require('express');
-
+const Resources = require('./model');
 const router = express.Router()
 
 router.get('/', (req, res, next) => {
-    res.json({ message: 'working', status: 200 })
+    Resources.getResources()
+    .then((resources) => {
+      res.json(resources);
+    })
+    .catch(next);
 });
 
 router.post('/', (req, res, next) => {
-    res.json({ message: 'working', status: 200 })
+    const resource = req.body
+    Resources.add(resource)
+      .then(newResource => {
+          res.json(newResource)
+      })
+      .catch(next)
 });
 
 
