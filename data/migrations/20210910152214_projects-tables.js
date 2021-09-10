@@ -12,7 +12,13 @@ exports.up = async function(knex) {
         table.string('resource_name', 128).notNullable().unique()
         table.string('resource_description', 128)
     })
-
+    .createTable('tasks', table => {
+        table.increments('task_id')
+        table.string('task_description', 128).notNullable()
+        table.string('task_notes', 128)
+        table.boolean('task_completed')
+        table.integer('project_id').notNullable().references('project_id').inTable('projects')
+    })
 };
 
 exports.down = function(knex) {
