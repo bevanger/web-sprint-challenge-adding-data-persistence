@@ -26,8 +26,8 @@ async function get() {
     return tasks;
 }
 
-async function create(task) {
-    const [id] = await db("tasks").add(task);
+async function add(task) {
+    const [id] = await db("tasks").insert(task);
     const newTask = {
       task_id: id,
       task_description: task.task_description,
@@ -40,6 +40,6 @@ async function create(task) {
 
 module.exports = {
     get,
-    create,
+    add,
     
   };
