@@ -1,6 +1,6 @@
 const express = require('express');
-const Tasks = require("./model");
 const router = express.Router()
+const Tasks = require("./model");
 
 router.get('/', (req, res, next) => {
     Tasks.get()
@@ -18,6 +18,14 @@ router.post('/', (req, res, next) => {
     })
     .catch(next);
 });
+
+router.use((err, req, res, next) => { 
+  res.status(err.status || 500).json({
+    message: err.message,
+    stack: err.stack,
+  })
+});
+
 
 
 module.exports = router;

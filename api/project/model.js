@@ -6,7 +6,7 @@ async function get() {
     return {
       project_name: project.project_name,
       project_description: project.project_description,
-      project_completed: project.project_completed != 1 ? false : true,
+      project_completed: project.project_completed ? true : false,
     };
   });
 
