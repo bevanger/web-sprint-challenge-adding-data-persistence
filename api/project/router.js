@@ -13,7 +13,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
     const project = req.body
-    Projects.insert(project)
+    Projects.add(project)
         .then((newProject) => {
             res.json(newProject)
         })

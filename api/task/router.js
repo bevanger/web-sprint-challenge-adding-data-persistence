@@ -1,13 +1,22 @@
 const express = require('express');
-
+const Tasks = require("./model");
 const router = express.Router()
 
 router.get('/', (req, res, next) => {
-    res.json({ message: 'working', status: 200 })
+    Tasks.get()
+    .then((task) => {
+      res.json(task);
+    })
+    .catch(next);
 });
 
 router.post('/', (req, res, next) => {
-    res.json({ message: 'working', status: 200 })
+  const data = req.body;
+  Tasks.add(data)
+    .then((newPro) => {
+      res.json(newPro);
+    })
+    .catch(next);
 });
 
 

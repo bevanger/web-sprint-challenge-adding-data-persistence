@@ -2,11 +2,11 @@ const db = require('../../data/dbConfig');
 
 async function get() {
   const projectsInfo = await db("projects");
-  const projectInfoUpdated = projectsInfo.map((e) => {
+  const projectInfoUpdated = projectsInfo.map((project) => {
     return {
-      project_name: e.project_name,
-      project_description: e.project_description,
-      project_completed: e.project_completed != 1 ? false : true,
+      project_name: project.project_name,
+      project_description: project.project_description,
+      project_completed: project.project_completed != 1 ? false : true,
     };
   });
 
