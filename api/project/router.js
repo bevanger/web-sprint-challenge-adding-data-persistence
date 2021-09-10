@@ -1,7 +1,7 @@
 const express = require('express');
+const router = express.Router();
 const Projects = require('./model');
 
-const router = express.Router()
 
 router.get('/', (req, res, next) => {
     Projects.get()

@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
   const data = req.body;
-  Tasks.add(data)
+  Tasks.create(data)
     .then((newPro) => {
       res.json(newPro);
     })
