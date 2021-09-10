@@ -15,12 +15,12 @@ async function get() {
 }
 
 async function add(project) {
-   const [id] = await('projects').insert(project)
+   const [id] = await db("projects").insert(project)
    const newProject = {
     project_id: id,
     project_name: project.project_name,
     project_description: project.project_description,
-    project_completed: project.project_completed != 1 ? false : true,
+    project_completed: project.project_completed ? true : false,
    }
    return newProject;
 }
